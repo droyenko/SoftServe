@@ -1,13 +1,17 @@
 <?php
 
+require_once 'Pet.php';
 
 class PetShop
 {
+    //3 метода возвращаею массив строк с именами
+    /* @var $entity \ */
     private $pets = array();
 
     public function __construct(Pet $pet)
     {
         $this->pets = $pet;
+        //пушим массив петов
     }
 
     public function getPriceHigherAvg($pets)

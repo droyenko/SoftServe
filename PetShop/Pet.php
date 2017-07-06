@@ -21,4 +21,9 @@ abstract class Pet implements iPet
     {
         return $this->price;
     }
+
+    public function isFluffy()
+    {
+        // TODO: Implement isFluffy() method.
+    }
 }
