@@ -14,28 +14,21 @@ class FibonacciSeries extends Task
 {
     protected function run($context)
     {
-        $this->getFibonacciSeries($context);
+        return $this->getFibonacciSeries($context);
     }
 
     protected function validate($context)
     {
-        $msg ="";
-        if (!$this->isValid($context)) {
-            $msg = "status: 'failed', reason: Input data is invalid";
+        if (!is_array($context) || count($context) < 1 || count($context) > 2 || !is_object($context[0])) {
+            $this->error = "status: 'failed', reason: Input data is invalid";
         } elseif ($context[0]->min < 0 || $context[0]->max < 0 || $context[0]->lenght < 0) {
-            $msg = "status: 'failed', reason: Invalid properties for context object. \"min\", \"max\" and \"length\" values should be > then 0";
+            $this->error = "status: 'failed', reason: Invalid properties for context object. \"min\", \"max\" and \"length\" values should be > then 0";
         } elseif ($context[0]->min > $context[0]->max){
-            $msg = "status: 'failed', reason: Invalid properties for context object. \"min\" can't be greater then \"max\" value";
+            $this->error = "status: 'failed', reason: Invalid properties for context object. \"min\" can't be greater then \"max\" value";
         }
-        return $msg;
-    }
-
-    private function isValid($context)
-    {
-        $isValid = true;
-        if (!is_array($context) || count($context) < 1 || count($context) > 2 || !is_object($context[0]))
-            $isValid = false;
-        return $isValid;
+        if ($this->error == '') {
+            $this->isValid = 1;
+        }
     }
 
     private function getFibonacciSeries($context)

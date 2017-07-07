@@ -1,20 +1,21 @@
 <?php
 
-class Cat extends Pet
+require_once 'FluffyPet.php';
+
+class Cat extends FluffyPet
 {
     function __construct($price, $color, $name, $fluffiness)
     {
-        parent::__construct($price, $color);
+        parent::__construct($price, $color, $fluffiness);
         $this->name = $name;
-        $this->fluffiness = $fluffiness;
     }
 
     public function isFluffy()
     {
-        if($this->fluffiness>0){
-            return true;
+        if ($this->fluffiness > 1) {
+            return 1;
         } else {
-            return false;
+            return 0;
         }
     }
 }

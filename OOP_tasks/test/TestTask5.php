@@ -9,16 +9,6 @@ class TestTask5 extends PHPUnit_Framework_TestCase
     * Test for the task5
     **/
 
-    public function setUp()
-    {
-        $this->FibonacciSeries = new FibonacciSeries();
-    }
-
-    public function tearDown()
-    {
-        unset($this->FibonacciSeries);
-    }
-
     public function provider_get_fibonacci_series()
     {
         $array = array(
@@ -26,9 +16,9 @@ class TestTask5 extends PHPUnit_Framework_TestCase
         );
         return array(//test for positive values
             array(array(6),
-                array( 121393, 196418, 317811, 514229, 832040)),
+                "121393; 196418; 317811; 514229; 832040"),
             array(array(1, 2),
-                array(1, 1, 2)),
+                "1; 1; 2"),
             array(array(-6),
                 $array[0]),
             array(array(-1, 2),
@@ -41,13 +31,15 @@ class TestTask5 extends PHPUnit_Framework_TestCase
      */
     public function test_task5($arr1, $arr2)
     {
+        $fibonacciSeries = new FibonacciSeries();
         $argv = func_get_args();
         if (count($argv[0]) == 1) {
-            $context = new Context($arr1[0]);
+            $contextObj = new Context($arr1[0]);
         }else{
-            $context = new Context($arr1[0], $arr1[1]);
+            $contextObj = new Context($arr1[0], $arr1[1]);
         }
+        $context = array($contextObj);
         $response = $arr2;
-        $this->assertEquals($response, $this->FibonacciSeries->initFibonacciSeries($context));
+        $this->assertEquals($response, $fibonacciSeries->resolveAsString($context));
     }
 }

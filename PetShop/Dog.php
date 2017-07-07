@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Pet.php';
+
 class Dog extends Pet
 {
     function __construct($price, $color, $name)
@@ -7,10 +9,4 @@ class Dog extends Pet
         parent::__construct($price, $color);
         $this->name = $name;
     }
-
-    public function isFluffy()
-    {
-        return false;
-    }
-
 }

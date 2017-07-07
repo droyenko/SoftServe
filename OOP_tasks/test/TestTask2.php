@@ -9,20 +9,10 @@ class TestTask2 extends PHPUnit_Framework_TestCase
      * Test for the task2
      **/
 
-    public function setUp()
-    {
-        $this->Envelope = new Envelope();
-    }
-
-    public function tearDown()
-    {
-        unset($this->Envelope);
-    }
-
     public function provider_fit_envelope()
     {
         $array = array(
-            "status: 'failed', reason: Invalid properties of envelope object. Envelope sides should be > then 0"
+            "status: 'failed', reason: Invalid properties of envelope object. Envelope sides should be greater then 0"
         );
         return array(
             array(6, 8, 8, 10, 1),//test for positive values
@@ -37,8 +27,10 @@ class TestTask2 extends PHPUnit_Framework_TestCase
      */
     public function test_task2($side1, $side2, $side3, $side4, $response)
     {
+        $envelope = new Envelope();
         $envelope1 = new EnvObj($side1, $side2);
         $envelope2 = new EnvObj($side3, $side4);
-        $this->assertEquals($response,  $this->Envelope->resolveAsString($envelope1, $envelope2));
+        $envelopes = array($envelope1, $envelope2);
+        $this->assertEquals($response,  $envelope->resolveAsString($envelopes));
     }
 }

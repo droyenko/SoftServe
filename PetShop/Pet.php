@@ -1,11 +1,12 @@
 <?php
 
+require_once 'iPet.php';
+
 abstract class Pet implements iPet
 {
     protected $price;
     protected $color;
     protected $name = "";
-    protected $fluffiness = 0;
 
     function __construct($price, $color)
     {
@@ -13,7 +14,8 @@ abstract class Pet implements iPet
         $this->color = $color;
     }
 
-    public function isYourColor(){
+    public function isYourColor()
+    {
         return $this->color;
     }
 
@@ -22,8 +24,8 @@ abstract class Pet implements iPet
         return $this->price;
     }
 
-    public function isFluffy()
+    public function isYourName()
     {
-        // TODO: Implement isFluffy() method.
+        return $this->name;
     }
 }

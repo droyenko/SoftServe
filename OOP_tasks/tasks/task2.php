@@ -20,23 +20,16 @@ class Envelope extends Task
 
     protected function validate($envelopes)
     {
-        $msg ="";
-        if (!$this->isValid($envelopes)) {
-            $msg = "status: 'failed', reason: Input data is invalid";
+        if (!is_array($envelopes) || count($envelopes) != 2 || !is_object($envelopes[0]) || !is_object($envelopes[1])) {
+            $this->error = "status: 'failed', reason: Input data is invalid";
         } elseif ($envelopes[0]->a < 0 || $envelopes[0]->b < 0 || $envelopes[1]->a < 0 || $envelopes[1]->b < 0) {
-            $msg = "status: 'failed', reason: Invalid properties of envelope object. Envelope sides should be greater then 0";
-        } elseif ($envelopes[0]->a = 0 || $envelopes[0]->b = 0 || $envelopes[1]->a = 0 || $envelopes[1]->b = 0){
-            $msg = "status: 'failed', reason: Invalid properties of envelope object. Envelope sides can't be equal to 0";
+            $this->error = "status: 'failed', reason: Invalid properties of envelope object. Envelope sides should be greater then 0";
+        } elseif ($envelopes[0]->a = 0 || $envelopes[0]->b = 0 || $envelopes[1]->a = 0 || $envelopes[1]->b = 0) {
+            $this->error = "status: 'failed', reason: Invalid properties of envelope object. Envelope sides can't be equal to 0";
         }
-        return $msg;
-    }
-
-    private function isValid($envelopes)
-    {
-        $isValid = true;
-        if (!is_array($envelopes) || count($envelopes) != 2 || !is_object($envelopes[0]) || !is_object($envelopes[1]))
-            $isValid = false;
-        return $isValid;
+        if ($this->error == '') {
+            $this->isValid = 1;
+        }
     }
 
     private function getLowestEnvelope($envelopes)
@@ -64,7 +57,13 @@ class EnvObj
     }
 }
 
-//$envelope1 = new EnvObj(6,8);
-//$envelope2 = new EnvObj(8,10);
 //$envelope = new Envelope();
-//print_r($envelope->initEnvelope($envelope2,$envelope1));
+//$envelope1 = new EnvObj(22, 66);
+//$envelope2 = new EnvObj(126, 888);
+//$envelopes = array($envelope1, $envelope2);
+//echo $envelope->isValid() . '<br>';
+//$envelope->validate($envelopes);
+//echo $envelope->isValid() . '<br>';
+//echo $envelope->getError() . '<br>';
+////echo $envelope->getLowestEnvelope($envelopes);
+//echo $envelopes[1]->a;

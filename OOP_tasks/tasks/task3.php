@@ -23,36 +23,28 @@ class Triangle extends Task
 {
     protected function run($triangles)
     {
-        $this->getTriangleDesc($triangles);
+        return $this->getTriangleDesc($triangles);
     }
 
     protected function validate($triangles)
     {
-        $msg ="";
+        if (!is_array($triangles) || count($triangles) < 1){
+            $this->error = "status: 'failed', reason: Input data is invalid";
+        }
         foreach ($triangles as $triangle) {
-            if (!$this->isValid($triangles)) {
-                $msg = "status: 'failed', reason: Input data is invalid";
+            if (!is_object($triangle)) {
+                $this->error = "status: 'failed', reason: Input data is invalid";
             } elseif ($triangle->a < 0 || $triangle->b < 0 || $triangle->c < 0) {
-                $msg = "status: 'failed', reason: Invalid properties of triangle object. Triangle sides should be greater then 0";
+                $this->error = "status: 'failed', reason: Invalid properties of triangle object. Triangle sides should be greater then 0";
             } elseif ($triangle->a = 0 || $triangle->b = 0 || $triangle->c = 0) {
-                $msg = "status: 'failed', reason: Invalid properties of triangle object. Triangle sides can't be equal to 0";
-            } elseif ((($triangle->a + $triangle->b) <= $triangle->c) || (($triangle->a + $triangle->c) <= $triangle->b) || (($triangle->c + $triangle->b) <= $triangle->a)){
-                $msg = "status: 'failed', reason: Invalid properties of triangle object. Sum of two triangle sides should be greater than third side";
-            }
+                $this->error = "status: 'failed', reason: Invalid properties of triangle object. Triangle sides can't be equal to 0";
+            } /*elseif ((($triangle->a + $triangle->b) <= $triangle->c) || (($triangle->a + $triangle->c) <= $triangle->b) || (($triangle->c + $triangle->b) <= $triangle->a)){
+                $this->error = "status: 'failed', reason: Invalid properties of triangle object. Sum of two triangle sides should be greater than third side";
+            }*/
         }
-        return $msg;
-    }
-    private function isValid($triangles)
-    {
-        $isValid = true;
-        foreach ($triangles as $triangle){
-            if (!is_object($triangle)){
-                $isValid = false;
-            }
+        if ($this->error == '') {
+            $this->isValid = 1;
         }
-        if (!is_array($triangles) || count($triangles) < 1)
-            $isValid = false;
-        return $isValid;
     }
 
     private function getTriangleDesc($triangles)

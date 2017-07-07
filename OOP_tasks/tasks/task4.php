@@ -26,32 +26,25 @@ class LuckyTicket extends Task
 
     protected function run($context)
     {
-        $this->countHappyTicket($context);
+        return $this->countHappyTicket($context);
     }
 
     protected function validate($context)
     {
-        $msg ="";
-        if (!$this->isValid($context)) {
-            $msg = "status: 'failed', reason: Input data is invalid";
-        } elseif ($context[0]->min < 0 || $context[0]->max > 0) {
-            $msg = "status: 'failed', reason: Invalid properties for context object. \"min\" and \"max\" values should be > then 0";
+        if (!is_array($context) || count($context) != 1 || !is_object($context[0])) {
+            $this->error = "status: 'failed', reason: Input data is invalid";
+        } elseif ($context[0]->min < 0 || $context[0]->max < 0) {
+            $this->error = "status: 'failed', reason: Invalid properties for context object. \"min\" and \"max\" values should be > then 0";
         } elseif ($context[0]->min > $context[0]->max){
-            $msg = "status: 'failed', reason: Invalid properties for context object. \"min\" can't be greater than \"max\" value";
+            $this->error = "status: 'failed', reason: Invalid properties for context object. \"min\" can't be greater than \"max\" value";
         } elseif ($context[0]->min > 999999 || $context[0]->max > 999999){
-            $msg = "status: 'failed', reason: Invalid properties for context object. \"min\" and \"max\" values should be < then 999999";
+            $this->error = "status: 'failed', reason: Invalid properties for context object. \"min\" and \"max\" values should be < then 999999";
         } elseif (count($context[0]) != 2) {
-            $msg = "status: 'failed', reason: Invalid properties for context object. Object should have only two properties";
+            $this->error = "status: 'failed', reason: Invalid properties for context object. Object should have only two properties";
         }
-        return $msg;
-    }
-
-    private function isValid($context)
-    {
-        $isValid = true;
-        if (!is_array($context) || count($context) != 1 || !is_object($context[0]))
-            $isValid = false;
-        return $isValid;
+        if ($this->error == '') {
+            $this->isValid = 1;
+        }
     }
 
     private function countHappyTicket($context)

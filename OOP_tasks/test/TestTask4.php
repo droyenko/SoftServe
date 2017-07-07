@@ -9,20 +9,10 @@ class TestTask4 extends PHPUnit_Framework_TestCase
    * Test for the task4
    **/
 
-    public function setUp()
-    {
-        $this->LuckyTicket = new LuckyTicket();
-    }
-
-    public function tearDown()
-    {
-        unset($this->LuckyTicket);
-    }
-
     public function provider_count_happy_ticket()
     {
         return array(
-            array(1, 200, 2, 0, 8),//test for positive values
+            array(100000, 200000, 2, 0, 8),//test for positive values
             array(1, 1001, 2, 1, 30),
             array(1000, 2001, 2, 45, 54)
         );
@@ -33,12 +23,11 @@ class TestTask4 extends PHPUnit_Framework_TestCase
      */
     public function test_task4($min, $max, $win_method, $count_method1, $count_method2)
     {
-        $context = new ContextObj($min, $max);
-        $response = new LuckyTicket();
-        $response->win_method = $win_method;
-        $response->count_method1 = $count_method1;
-        $response->count_method2 = $count_method2;
-        $this->assertEquals($response, $this->LuckyTicket->initHappyTicket($context));
+        $luckyTicket = new LuckyTicket();
+        $contextObj = new ContextObj($min, $max);
+        $response = "$win_method; $count_method1; $count_method2; ";
+        $context = array($contextObj);
+        $this->assertEquals($response, $luckyTicket->resolveAsString($context));
     }
 
     /*
@@ -50,7 +39,6 @@ class TestTask4 extends PHPUnit_Framework_TestCase
             "status: 'failed', reason: Invalid properties for context object. \"min\" and \"max\" values should be > then 0"
         );
         return array( //test for negative values
-//            array(1, 200, $array[0]),
             array(-10, 200, $array[0])
         );
     }
@@ -60,7 +48,9 @@ class TestTask4 extends PHPUnit_Framework_TestCase
      */
     public function test_task4_exceptions($min, $max, $response)
     {
-        $context = new ContextObj($min, $max);
-        $this->assertEquals($response, $this->LuckyTicket->initHappyTicket($context));
+        $luckyTicket = new LuckyTicket();
+        $contextObj = new ContextObj($min, $max);
+        $context = array($contextObj);
+        $this->assertEquals($response, $luckyTicket->resolveAsString($context));
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+require_once '../tasks/Task.php';
 
 /*Вывести шахматную доску с заданными размерами высоты и ширины, по принципу:
 *  *  *  *  *  *
@@ -13,42 +14,25 @@
 
 class Chessboard extends Task
 {
-    public function run($chessBoard)
+    protected function run($chessBoard)
     {
         return $this->getChessBoard($chessBoard);
     }
 
-    public function validate($chessBoard)
+    protected function validate($chessBoard)
     {
-        $msg ="";
-        if (!$this->isValid($chessBoard)) {
-            $msg = "status: 'failed', reason: Input data is invalid";
+        if (!is_array($chessBoard) || count($chessBoard) != 1 || !is_object($chessBoard[0])) {
+            $this->error = "status: 'failed', reason: Input data is invalid";
         } elseif ($chessBoard[0]->rows < 0 || $chessBoard[0]->cols < 0) {
-            $msg = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be greater then 0";
-        } elseif ($chessBoard[0]->rows = 0 || $chessBoard[0]->cols = 0){
-            $msg = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns can't be equal to 0";
-        } elseif (!is_int($chessBoard[0]->rows) || !is_int($chessBoard[0]->cols)){
-            $msg = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be integer";
+            $this->error = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be greater then 0";
+        } elseif (!is_int($chessBoard[0]->rows) || !is_int($chessBoard[0]->cols)) {
+            $this->error = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be integer";
+        } elseif ($chessBoard[0]->rows = 0 || $chessBoard[0]->cols = 0) {
+            $this->error = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns can't be equal to 0";
         }
-        return $msg;
-    }
-
-    public function resolveAsString($chessBoard)
-    {
-        $msg = $this->validate($chessBoard);
-        if ($msg != ""){
-            return $msg;
-        } else {
-            return $this->run($chessBoard);
+        if ($this->error == '') {
+            $this->isValid = 1;
         }
-    }
-
-    private function isValid($chessBoard)
-    {
-        $isValid = true;
-        if (!is_array($chessBoard) || count($chessBoard) != 1 || !is_object($chessBoard[0]))
-            $isValid = false;
-        return $isValid;
     }
 
     private function getChessBoard($chessBoard)
@@ -80,3 +64,9 @@ class ChessBoardObj
     }
 }
 
+//$chessBoard = new Chessboard();
+//$chessBoardArr = array();
+//$chessBoardObj = new ChessBoardObj(4, 4, '#');
+//$chessBoardArr[] = $chessBoardObj;
+////echo gettype($chessBoardArr[0]->rows);
+//echo $chessBoard->getChessBoard($chessBoardArr);
