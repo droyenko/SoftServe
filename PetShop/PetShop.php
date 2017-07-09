@@ -3,18 +3,15 @@
 require_once 'Cat.php';
 require_once 'Dog.php';
 require_once 'Hamster.php';
+require_once 'SQLdbConnection.php';
 
 class PetShop
 {
     private $pets = array();
 
-    public function __construct(array $pets)
+    public function __construct()
     {
-        foreach ($pets as $pet){
-            if (!($pet instanceof Pet)){
-                return "Array of objects passed to constructor must contain instances of Pets";
-            }
-        }
+        $pets = SQLdbConnection::getAllPetsAsArray();
         $this->pets = $pets;
     }
 
@@ -69,21 +66,8 @@ class PetShop
         $pets[] = $pet;
     }
 }
-$cat1 = new Cat(300,'black', 'Jack', 3);
-$cat2 = new Cat(150,'gray', 'Goose', 1);
-$cat3 = new Cat(400,'white', 'Snake', 0);
 
-$dog1 = new Dog(500, 'red', 'Heat');
-$dog2 = new Dog(700, 'white', 'Snowflake');
-$dog3 = new Dog(300, 'yellow', 'Submarine');
-
-$hams1 = new Hamster(100, 'white', '1');
-$hams2 = new Hamster(130, 'green', '2');
-$hams3 = new Hamster(85, 'blue', '0');
-
-$pets = array($cat1, $cat2, $cat3, $dog1, $dog2, $dog3, $hams1, $hams2, $hams3);
-
-$petShop = new PetShop($pets);
+$petShop = new PetShop();
 
 echo "List of all cats: {$petShop->getCats()}.<br>";
 echo "List of expensive pets: {$petShop->getPriceHigherAvg()}.<br>";
