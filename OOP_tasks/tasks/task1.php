@@ -27,7 +27,7 @@ class Chessboard extends Task
             $this->error = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be greater then 0";
         } elseif (!is_int($chessBoard[0]->rows) || !is_int($chessBoard[0]->cols)) {
             $this->error = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be integer";
-        } elseif ($chessBoard[0]->rows = 0 || $chessBoard[0]->cols = 0) {
+        } elseif ($chessBoard[0]->rows == 0 || $chessBoard[0]->cols == 0) {
             $this->error = "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns can't be equal to 0";
         }
         if ($this->error == '') {
@@ -63,10 +63,3 @@ class ChessBoardObj
         $this->sign = $sign;
     }
 }
-
-//$chessBoard = new Chessboard();
-//$chessBoardArr = array();
-//$chessBoardObj = new ChessBoardObj(4, 4, '#');
-//$chessBoardArr[] = $chessBoardObj;
-////echo gettype($chessBoardArr[0]->rows);
-//echo $chessBoard->getChessBoard($chessBoardArr);

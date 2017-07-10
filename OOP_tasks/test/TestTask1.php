@@ -13,7 +13,6 @@ class TestTask1 extends PHPUnit_Framework_TestCase
     {
         $array = array(
             '*  *  
-  *  *
 ',
             "status: 'failed', reason: Input data is invalid",
             "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be greater then 0",
@@ -21,9 +20,10 @@ class TestTask1 extends PHPUnit_Framework_TestCase
             "status: 'failed', reason: Invalid values for number of rows or columns. Number of rows and columns should be integer"
         );
         return array(
-            array(2, 2, "*", $array[0]),//test for positive values
+            array(1, 2, "*", $array[0]),//test for positive values
             array('t', 2, "*", $array[4]),
             array(3.56, 2.85, "*", $array[4]),
+            array(0, 4, "*", $array[3]),
             array(2, -2, "*", $array[2]), //test for negative values
             array(-3, 2, "#", $array[2])
         );

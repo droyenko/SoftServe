@@ -36,11 +36,11 @@ class Triangle extends Task
                 $this->error = "status: 'failed', reason: Input data is invalid";
             } elseif ($triangle->a < 0 || $triangle->b < 0 || $triangle->c < 0) {
                 $this->error = "status: 'failed', reason: Invalid properties of triangle object. Triangle sides should be greater then 0";
-            } elseif ($triangle->a = 0 || $triangle->b = 0 || $triangle->c = 0) {
+            } elseif ($triangle->a == 0 || $triangle->b == 0 || $triangle->c == 0) {
                 $this->error = "status: 'failed', reason: Invalid properties of triangle object. Triangle sides can't be equal to 0";
-            } /*elseif ((($triangle->a + $triangle->b) <= $triangle->c) || (($triangle->a + $triangle->c) <= $triangle->b) || (($triangle->c + $triangle->b) <= $triangle->a)){
+            } elseif ((($triangle->a + $triangle->b) <= $triangle->c) || (($triangle->a + $triangle->c) <= $triangle->b) || (($triangle->c + $triangle->b) <= $triangle->a)){
                 $this->error = "status: 'failed', reason: Invalid properties of triangle object. Sum of two triangle sides should be greater than third side";
-            }*/
+            }
         }
         if ($this->error == '') {
             $this->isValid = 1;

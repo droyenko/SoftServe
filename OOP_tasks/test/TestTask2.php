@@ -12,12 +12,14 @@ class TestTask2 extends PHPUnit_Framework_TestCase
     public function provider_fit_envelope()
     {
         $array = array(
-            "status: 'failed', reason: Invalid properties of envelope object. Envelope sides should be greater then 0"
+            "status: 'failed', reason: Invalid properties of envelope object. Envelope sides should be greater then 0",
+            "status: 'failed', reason: Invalid properties of envelope object. Envelope sides can't be equal to 0"
         );
         return array(
             array(6, 8, 8, 10, 1),//test for positive values
             array(6.5, 8.456, 5.67, 8.32, 2),
             array(5.67, 8.32, 6.5, 8.456, 1),
+            array(0, 5, 6.5, 8.456, $array[1]),
             array(-5, -4, 8, 10, $array[0])//test for negative values
         );
     }

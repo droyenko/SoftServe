@@ -12,7 +12,7 @@ class TestTask4 extends PHPUnit_Framework_TestCase
     public function provider_count_happy_ticket()
     {
         return array(
-            array(100000, 200000, 2, 0, 8),//test for positive values
+            array(100000, 200000, 1, 5280, 2455),//test for positive values
             array(1, 1001, 2, 1, 30),
             array(1000, 2001, 2, 45, 54)
         );
@@ -25,7 +25,7 @@ class TestTask4 extends PHPUnit_Framework_TestCase
     {
         $luckyTicket = new LuckyTicket();
         $contextObj = new ContextObj($min, $max);
-        $response = "$win_method; $count_method1; $count_method2; ";
+        $response = "$win_method; $count_method1; $count_method2";
         $context = array($contextObj);
         $this->assertEquals($response, $luckyTicket->resolveAsString($context));
     }

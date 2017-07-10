@@ -13,6 +13,7 @@ class TestTask3 extends PHPUnit_Framework_TestCase
     {
         $array = array(
             "status: 'failed', reason: Invalid properties of triangle object. Triangle sides should be greater then 0",
+            "status: 'failed', reason: Invalid properties of triangle object. Triangle sides can't be equal to 0",
             "status: 'failed', reason: Invalid properties of triangle object. Sum of two triangle sides should be greater than third side"
         );
         return array(
@@ -27,7 +28,15 @@ class TestTask3 extends PHPUnit_Framework_TestCase
             array(array('GHI', -5, 10, 8), //test for negative values
                 array('ABC', 35, 100, 80),
                 array('DEF', 20, 35, 50),
-                $array[0])
+                $array[0]),
+            array(array('GHI', 5, 20, 8), //test for impossible triangle sides
+                array('ABC', 30, 100, 80),
+                array('DEF', 20, 35, 50),
+                $array[2]),
+            array(array('GHI', 0, 10, 8), //test for zero
+                array('ABC', 30, 100, 80),
+                array('DEF', 20, 35, 50),
+                $array[1])
         );
     }
 

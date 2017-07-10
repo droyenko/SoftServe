@@ -23,6 +23,7 @@ class LuckyTicket extends Task
     public $win_method;
     public $count_method1;
     public $count_method2;
+    const TICKET_LENGTH = 6;
 
     protected function run($context)
     {
@@ -39,9 +40,9 @@ class LuckyTicket extends Task
             $this->error = "status: 'failed', reason: Invalid properties for context object. \"min\" can't be greater than \"max\" value";
         } elseif ($context[0]->min > 999999 || $context[0]->max > 999999){
             $this->error = "status: 'failed', reason: Invalid properties for context object. \"min\" and \"max\" values should be < then 999999";
-        } elseif (count($context[0]) != 2) {
+        } /*elseif (count($context[0]) != 2) {
             $this->error = "status: 'failed', reason: Invalid properties for context object. Object should have only two properties";
-        }
+        }*/
         if ($this->error == '') {
             $this->isValid = 1;
         }
@@ -59,7 +60,7 @@ class LuckyTicket extends Task
                 $min = "0" . $min;
             } while (strlen($min) < 6);
 
-            //6 задать константой
+//6 задать константой
 
         }
         if (strlen($max) < 6) {
@@ -94,7 +95,7 @@ class LuckyTicket extends Task
         }
         $result->count_method1 = $count_method1;
         $result->count_method2 = $count_method2;
-        return implode("; ", $result);
+        return "{$result->win_method}; {$result->count_method1}; {$result->count_method2}";
     }
 }
 
@@ -108,3 +109,4 @@ class ContextObj
         $this->max = $max;
     }
 }
+
