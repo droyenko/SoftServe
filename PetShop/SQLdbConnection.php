@@ -9,7 +9,7 @@ class SQLdbConnection
     /*
     * Encapsulated function for connection to database
     */
-    private function dbConnect()
+    private static function dbConnect()
     {
         $dsn = 'mysql:dbname=petshopdb;host=localhost';
         $user = 'root';
@@ -43,5 +43,3 @@ class SQLdbConnection
         return $pets;
     }
 }
-
-//print_r(SQLdbConnection::getAllPetsAsArray());

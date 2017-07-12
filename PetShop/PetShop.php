@@ -43,7 +43,7 @@ class PetShop
     {
         $result = array();
         foreach ($this->pets as $pet) {
-            if (get_parent_class($pet) == 'FluffyPet' && ($pet->isYourColor() == 'white' || $pet->isFluffy() == 1)) {
+            if (($pet instanceof FluffyPet) && ($pet->isYourColor() == 'white' || $pet->isFluffy())) {
                 $result[] = $pet->isYourName();
             }
         }
@@ -54,7 +54,7 @@ class PetShop
     {
         $result = array();
         foreach ($this->pets as $pet) {
-            if (get_class($pet) == 'Cat') {
+            if ($pet instanceof Cat) {
                 $result[] = $pet->isYourName();
             }
         }
