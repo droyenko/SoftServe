@@ -52,11 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PetShop.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PetShop.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PetShop.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-89">
-              <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+            <state relative-caret-position="441">
+              <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -92,11 +92,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SQLdbConnection.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SQLdbConnection.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLdbConnection.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="771">
-              <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+            <state relative-caret-position="696">
+              <caret line="42" column="15" lean-forward="true" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
               <folding>
                 <marker date="1499788757589" expanded="true" signature="686:706" ph="SELECT * fro... petsdb" />
               </folding>
@@ -172,9 +172,9 @@
         <option value="$PROJECT_DIR$/Dog.php" />
         <option value="D:/Programming/HW/web/Complete Web Developer Course/4-jquery/jquery.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/PetShop.php" />
         <option value="$PROJECT_DIR$/SQLdbConnection.php" />
         <option value="dbtable:/25417ae6/1200f34e-a018-485a-88a2-03c5766ca8fa/petshopdb.petsdb" />
+        <option value="$PROJECT_DIR$/PetShop.php" />
       </list>
     </option>
   </component>
@@ -323,12 +323,12 @@
       <updated>1499277573121</updated>
       <workItem from="1499277574456" duration="21188000" />
       <workItem from="1499410801954" duration="32445000" />
-      <workItem from="1499687296576" duration="27655000" />
+      <workItem from="1499687296576" duration="28566000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81288000" />
+    <option name="totallyTimeSpent" value="82199000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -340,7 +340,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1765625" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -369,7 +369,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -524,22 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PetShop.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-89">
-          <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/25417ae6/1200f34e-a018-485a-88a2-03c5766ca8fa/petshopdb.petsdb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -595,11 +581,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SQLdbConnection.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="771">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state relative-caret-position="696">
+          <caret line="42" column="15" lean-forward="true" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
           <folding>
             <marker date="1499788757589" expanded="true" signature="686:706" ph="SELECT * fro... petsdb" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PetShop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>

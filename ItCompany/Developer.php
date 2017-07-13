@@ -1,9 +1,11 @@
 <?php
 
+require_once 'HardSpecialist.php';
+
 class Developer extends HardSpecialist
 {
-    protected function doWork()
+    public function doWork()
     {
-        echo "I'm doing my developer work";
+        return "My name is {$this->getName()}, and I'm doing my Development work as a member of {{$this->getTeam()}";
     }
 }

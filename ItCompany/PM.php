@@ -1,9 +1,11 @@
 <?php
 
+require_once 'HardSpecialist.php';
+
 class PM extends HardSpecialist
 {
-    protected function doWork()
+    public function doWork()
     {
-        echo "I'm doing my project manager work";
+        return "My name is {$this->getName()}, and I'm doing my PM work as a member of {{$this->getTeam()}";
     }
 }

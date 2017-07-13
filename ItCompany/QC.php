@@ -1,9 +1,11 @@
 <?php
 
+require_once 'HardSpecialist.php';
+
 class QC extends HardSpecialist
 {
-    protected function doWork()
+    public function doWork()
     {
-        echo "I'm doing my quality control work";
+        return "My name is {$this->getName()}, and I'm doing my QC work as a member of {{$this->getTeam()}";
     }
 }

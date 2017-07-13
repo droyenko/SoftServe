@@ -1,12 +1,16 @@
 <?php
 
+require_once 'Candidate.php';
+
 class HrTeam
 {
     public static function getDev($need)
     {
-        foreach (ItCompany::getCandidates() as $candidate){
-            if (($candidate['profile'] == 'PHP') || ($candidate['profile'] == 'Java')){
-                if (($candidate['experience'] >= $need['experience']) && ($candidate['wantedSalary'] <= $need['wantedSalary'])){
+        $candidates = ItCompany::getCandidates();
+        foreach ($candidates as $candidate) {
+            if ($candidate->getProfile() == 'Dev') {
+                if (($candidate->getExperience() >= $need->getExperience())
+                 && ($candidate->getWantedSalary() <= $need->getWantedSalary())) {
                     return $candidate;
                 }
             }
@@ -15,9 +19,11 @@ class HrTeam
 
     public static function getQC($need)
     {
-        foreach (ItCompany::getCandidates() as $candidate){
-            if ($candidate['profile'] == 'PM'){
-                if (($candidate['experience'] >= $need['experience']) && ($candidate['wantedSalary'] <= $need['wantedSalary'])){
+        $candidates = ItCompany::getCandidates();
+        foreach ($candidates as $candidate) {
+            if ($candidate->getProfile() == 'PM') {
+                if (($candidate->getExperience() >= $need->getExperience())
+                 && ($candidate->getWantedSalary() <= $need->getWantedSalary())) {
                     return $candidate;
                 }
             }
@@ -26,9 +32,11 @@ class HrTeam
 
     public static function getPM($need)
     {
-        foreach (ItCompany::getCandidates() as $candidate){
-            if ($candidate['profile'] == 'QC'){
-                if (($candidate['experience'] >= $need['experience']) && ($candidate['wantedSalary'] <= $need['wantedSalary'])){
+        $candidates = ItCompany::getCandidates();
+        foreach ($candidates as $candidate) {
+            if ($candidate->getProfile() == 'QC') {
+                if (($candidate->getExperience() >= $need->getExperience())
+                 && ($candidate->getWantedSalary() <= $need->getWantedSalary())) {
                     return $candidate;
                 }
             }

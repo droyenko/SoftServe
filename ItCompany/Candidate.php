@@ -1,5 +1,7 @@
 <?php
 
+require_once 'Person.php';
+
 class Candidate extends Person
 {
     protected $experience;
@@ -14,4 +16,18 @@ class Candidate extends Person
         parent::__construct($name);
     }
 
+    public function getExperience()
+    {
+        return $this->experience;
+    }
+
+    public function getWantedSalary()
+    {
+        return $this->wantedSalary;
+    }
+
+    public function getProfile()
+    {
+        return $this->profile;
+    }
 }
