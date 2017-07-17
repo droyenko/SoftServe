@@ -6,9 +6,9 @@ class Team
     protected $project;
     protected $teamMembers = array();
     protected $needs = array();
-    protected $completeness = true;
+    protected $completeness = false;
 
-    public function __construct($teamName, $project, $teamMembers)
+    public function __construct($teamName, $project, $teamMembers, $completeness = "1")
     {
         $this->teamName = $teamName;
         $this->project = $project;
@@ -43,7 +43,16 @@ class Team
     public function getNeeds()
     {
         return $this->needs;
+    }
 
+    public function setNeeds(array $needs)
+    {
+        $this->needs = $needs;
+        if (count($needs) == 0) {
+            $this->completeness = true;
+        } else {
+            $this->completeness = false;
+        }
     }
 
     public function addNeed($experience, $wantedSalary, $profile)
@@ -62,20 +71,25 @@ class Team
             case 'Dev':
                 $newTeamMember = new Developer($name, $salary, $position, $this->teamName);
                 array_push($this->teamMembers, $newTeamMember);
+                break;
             case 'PM':
                 $newTeamMember = new PM($name, $salary, $position, $this->teamName);
                 array_push($this->teamMembers, $newTeamMember);
+                break;
             case 'QC':
                 $newTeamMember = new QC($name, $salary, $position, $this->teamName);
                 array_push($this->teamMembers, $newTeamMember);
+                break;
         }
     }
 
     public function doJob()
     {
-        $teamMembers = $this->teamMembers;
+        $teamWork = "";
+        $teamMembers = $this->getTeamMembers();
         foreach ($teamMembers as $teamMember) {
-            return $teamMember->doWork();
+            $teamWork .= $teamMember->doWork() . "<br>";
         }
+        return $teamWork;
     }
 }

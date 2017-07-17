@@ -1,8 +1,9 @@
 <?php
 
 require_once 'Person.php';
+require_once 'IITWorker.php';
 
-class Candidate extends Person
+class Candidate extends Person implements IITWorker
 {
     protected $experience;
     protected $wantedSalary;
@@ -29,5 +30,10 @@ class Candidate extends Person
     public function getProfile()
     {
         return $this->profile;
+    }
+
+    public function doITWork()
+    {
+        return true;
     }
 }

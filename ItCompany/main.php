@@ -42,21 +42,14 @@ $teams = array($phpTeam, $javaTeam);
 $itCompany = new ItCompany($candidates, $teams);
 
 
-
-//echo "PHP TeamMembers<br>";
-//print_r($phpTeam->getTeamMembers());
-//echo "<br>====================================================================================<br>";
-//$phpTeam->addTeamMember($dev1Candidate);
-//echo "<br>====================================================================================<br>";
-//echo $dev1Candidate->getProfile();
-//echo "<br>====================================================================================<br>";
-//print_r($phpTeam->getTeamMembers());
-
 echo "PHP TeamMembers<br>";
 print_r($phpTeam->getTeamMembers());
 echo "<br>====================================================================================<br>";
 echo "PHP Team Needs<br>";
 print_r($phpTeam->getNeeds());
+echo "<br>====================================================================================<br>";
+echo "Candidates<br>";
+print_r(ItCompany::getCandidates());
 echo "<br>====================================================================================<br>";
 $itCompany->hire();
 echo "PHP TeamMembers<br>";
@@ -64,21 +57,30 @@ print_r($phpTeam->getTeamMembers());
 echo "<br>====================================================================================<br>";
 echo "PHP Team Needs<br>";
 print_r($phpTeam->getNeeds());
+echo "<br>====================================================================================<br>";
+echo "Candidates<br>";
+print_r(ItCompany::getCandidates());
+echo "<br>====================================================================================<br>";
+var_dump($phpTeam->isComplete());
 
-//echo "Java TeamMembers<br>";
-//print_r($javaTeam->getTeamMembers());
+//$needs = $phpTeam->getNeeds();
+//print_r($needs);
 //echo "<br>====================================================================================<br>";
-//echo "Java Team Needs<br>";
-//print_r($javaTeam->getNeeds());
-//echo "<br>====================================================================================<br>";
-//$itCompany->hire();
-//echo "Java TeamMembers<br>";
-//print_r($javaTeam->getTeamMembers());
-//echo "<br>====================================================================================<br>";
-//echo "Java Team Needs<br>";
-//print_r($javaTeam->getNeeds());
-
-//$candidates = ItCompany::getCandidates();
-//foreach ($candidates as $candidate) {
-//    print_r($candidate->getProfile());
+//foreach ($needs as $key => $need) {
+//    $dev = HrTeam::getDev($need);
+//    $phpTeam->addTeamMember($dev);
 //}
+//print_r($phpTeam->getTeamMembers());
+//echo "<br>====================================================================================<br>";
+//print_r($phpTeam->getNeeds());
+
+//print_r($phpTeam->getTeamMembers());
+//$needs = $phpTeam->getNeeds();
+//foreach ($needs as $key => $need) {
+//    $dev = HrTeam::getPM($need);
+//    $phpTeam->addTeamMember($dev);
+//    print_r($dev);
+//}
+//echo "<br>====================================================================================<br>";
+//print_r($phpTeam->getTeamMembers());
+
