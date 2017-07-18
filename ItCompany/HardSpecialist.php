@@ -1,7 +1,8 @@
 <?php
 
-require_once 'Worker.php';
-require_once 'IITWorker.php';
+spl_autoload_register(function ($name) {
+    require_once $name . '.php';
+});
 
 abstract class HardSpecialist extends Worker implements IITWorker
 {

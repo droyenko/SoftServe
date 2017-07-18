@@ -1,10 +1,9 @@
 <?php
 
-require_once '../Developer.php';
-require_once '../PM.php';
-require_once '../QC.php';
-require_once '../Team.php';
-require_once '../Candidate.php';
+spl_autoload_register(function ($name)
+{
+    require_once '../' . $name . '.php';
+});
 
 class TestTeam extends PHPUnit_Framework_TestCase
 {

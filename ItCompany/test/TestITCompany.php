@@ -1,7 +1,9 @@
 <?php
 
-require_once '../Candidate.php';
-require_once '../ItCompany.php';
+spl_autoload_register(function ($name)
+{
+    require_once '../' . $name . '.php';
+});
 
 class TestITCompany extends PHPUnit_Framework_TestCase
 {

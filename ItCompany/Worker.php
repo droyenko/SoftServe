@@ -1,8 +1,10 @@
 <?php
 
-require_once 'Person.php';
+spl_autoload_register(function ($name) {
+    require_once $name . '.php';
+});
 
-abstract class Worker extends Person
+abstract class Worker extends Person implements JsonSerializable
 {
     protected $salary;
     protected $position;
@@ -14,6 +16,16 @@ abstract class Worker extends Person
         $this->salary = $salary;
         $this->position = $position;
         $this->team = $team;
+    }
+
+    public function jsonSerialize()
+    {
+        return [
+            'salary' => $this->getSalary(),
+            'position' => $this->getPosition(),
+            'team' => $this->getTeam(),
+            'name' => $this->getName()
+        ];
     }
 
     public function getSalary()

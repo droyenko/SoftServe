@@ -1,13 +1,8 @@
 <?php
 
-//require_once '../Candidate.php';
-//require_once '../ItCompany.php';
-//require_once '../DevRecruiter.php';
-//require_once '../PMRecruiter.php';
-//require_once '../QCRecruiter.php';
 spl_autoload_register(function ($name)
 {
-    require_once $name . '.php';
+    require_once '../' . $name . '.php';
 });
 
 class TestHRTeam extends PHPUnit_Framework_TestCase

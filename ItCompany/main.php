@@ -1,11 +1,12 @@
 <?php
 
-spl_autoload_register(function ($name)
-{
+spl_autoload_register(function ($name) {
     require_once $name . '.php';
 });
 
 //Creating array of candidates
+
+//$str = file_get_contents('http://localhost/softserve/ItCompany/txt/InputData.json');
 $dev1Candidate = new Candidate('Adam', 3, 1500, 'Dev');
 $dev2Candidate = new Candidate('Brian', 2, 1200, 'Dev');
 $pm1Candidate = new Candidate('John', 2, 1500, 'PM');
@@ -21,7 +22,7 @@ $pm1 = new PM('Anastasia', 1500, 'PM', 'PHP Team');
 $pm2 = new PM('Elisabeth', 1900, 'PM', 'Java Team');
 $qc1 = new QC('Sara', 500, 'QC', 'PHP Team');
 $qc2 = new QC('Albert', 1000, 'QC', 'Java Team');
-$phpTeamMembers = array($dev1, $pm1, $qc1);
+$phpTeamMembers = array($dev1, $pm1, $qc1,);
 $javaTeamMembers = array($dev2, $pm2, $qc2);
 
 //Creating two teams with needs
@@ -41,7 +42,6 @@ $teams = array($phpTeam, $javaTeam);
 $itCompany = new ItCompany($candidates, $teams);
 
 $hrTeam = new HrTeam($itCompany);
-
 
 echo "PHP TeamMembers<br>";
 print_r($phpTeam->getTeamMembers());
@@ -65,27 +65,3 @@ echo "<br>======================================================================
 var_dump($phpTeam->isComplete());
 print_r($phpTeam->doJob());
 var_dump($phpTeam->isComplete());
-
-//print_r($phpTeam->getTeamMembers());
-//echo "<br>====================================================================================<br>";
-//$needs = $phpTeam->getNeeds();
-//print_r($needs);
-//echo "<br>====================================================================================<br>";
-//foreach ($needs as $key => $need) {
-//    $dev = $hrTeam->getSpecialist($need, $itCompany);
-//    $phpTeam->addTeamMember($dev);
-//}
-//print_r($phpTeam->getTeamMembers());
-//echo "<br>====================================================================================<br>";
-//print_r($phpTeam->getNeeds());
-
-//print_r($phpTeam->getTeamMembers());
-//$needs = $phpTeam->getNeeds();
-//foreach ($needs as $key => $need) {
-//    $dev = HrTeam::getPM($need);
-//    $phpTeam->addTeamMember($dev);
-//    print_r($dev);
-//}
-//echo "<br>====================================================================================<br>";
-//print_r($phpTeam->getTeamMembers());
-
