@@ -4,16 +4,17 @@ require_once 'Recruiter.php';
 
 class DevRecruiter extends Recruiter
 {
-    public static function getSpecialist($need)
+    public function getSpecialist(Candidate $need, ItCompany $company)
     {
-        $candidates = ItCompany::getCandidates();
+        $candidates = $company->getCandidates();
         foreach ($candidates as $key => $candidate) {
             if ($candidate->getProfile() == 'Dev') {
                 if (($candidate->getExperience() >= $need->getExperience())
                     && ($candidate->getWantedSalary() <= $need->getWantedSalary())
                 ) {
                     unset($candidates[$key]);
-                    ItCompany::setCandidates($candidates);
+                    $tmpCandidates = array_values($candidates);
+                    $company->setCandidates($tmpCandidates);
                     return $candidate;
                 }
             }

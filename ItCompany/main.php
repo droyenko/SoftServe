@@ -1,11 +1,9 @@
 <?php
 
-require_once 'Candidate.php';
-require_once 'Developer.php';
-require_once 'PM.php';
-require_once 'QC.php';
-require_once 'Team.php';
-require_once 'ItCompany.php';
+spl_autoload_register(function ($name)
+{
+    require_once $name . '.php';
+});
 
 //Creating array of candidates
 $dev1Candidate = new Candidate('Adam', 3, 1500, 'Dev');
@@ -31,6 +29,7 @@ $phpTeam = new Team('PHP Team', 'Fishing blog', $phpTeamMembers);
 $phpTeam->addNeed(2, 1700, 'Dev');
 $phpTeam->addNeed(4, 2300, 'PM');
 
+
 $javaTeam = new Team('Java Team', 'Server for blog', $javaTeamMembers);
 $javaTeam->addNeed(1, 1500, 'Dev');
 $javaTeam->addNeed(2, 1600, 'QC');
@@ -41,6 +40,8 @@ $teams = array($phpTeam, $javaTeam);
 //creating new object of ItCompany
 $itCompany = new ItCompany($candidates, $teams);
 
+$hrTeam = new HrTeam($itCompany);
+
 
 echo "PHP TeamMembers<br>";
 print_r($phpTeam->getTeamMembers());
@@ -49,9 +50,9 @@ echo "PHP Team Needs<br>";
 print_r($phpTeam->getNeeds());
 echo "<br>====================================================================================<br>";
 echo "Candidates<br>";
-print_r(ItCompany::getCandidates());
+print_r($itCompany->getCandidates());
 echo "<br>====================================================================================<br>";
-$itCompany->hire();
+$itCompany->hire($phpTeam);
 echo "PHP TeamMembers<br>";
 print_r($phpTeam->getTeamMembers());
 echo "<br>====================================================================================<br>";
@@ -59,15 +60,19 @@ echo "PHP Team Needs<br>";
 print_r($phpTeam->getNeeds());
 echo "<br>====================================================================================<br>";
 echo "Candidates<br>";
-print_r(ItCompany::getCandidates());
+print_r($itCompany->getCandidates());
 echo "<br>====================================================================================<br>";
 var_dump($phpTeam->isComplete());
+print_r($phpTeam->doJob());
+var_dump($phpTeam->isComplete());
 
+//print_r($phpTeam->getTeamMembers());
+//echo "<br>====================================================================================<br>";
 //$needs = $phpTeam->getNeeds();
 //print_r($needs);
 //echo "<br>====================================================================================<br>";
 //foreach ($needs as $key => $need) {
-//    $dev = HrTeam::getDev($need);
+//    $dev = $hrTeam->getSpecialist($need, $itCompany);
 //    $phpTeam->addTeamMember($dev);
 //}
 //print_r($phpTeam->getTeamMembers());

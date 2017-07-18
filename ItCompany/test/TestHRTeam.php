@@ -1,10 +1,14 @@
 <?php
 
-require_once '../Candidate.php';
-require_once '../ItCompany.php';
-require_once '../DevRecruiter.php';
-require_once '../PMRecruiter.php';
-require_once '../QCRecruiter.php';
+//require_once '../Candidate.php';
+//require_once '../ItCompany.php';
+//require_once '../DevRecruiter.php';
+//require_once '../PMRecruiter.php';
+//require_once '../QCRecruiter.php';
+spl_autoload_register(function ($name)
+{
+    require_once $name . '.php';
+});
 
 class TestHRTeam extends PHPUnit_Framework_TestCase
 {
@@ -36,9 +40,10 @@ class TestHRTeam extends PHPUnit_Framework_TestCase
         $qcCandidate = new Candidate('Mr.QC', 2, 200, 'QC');
         $devCandidate = new Candidate('Mr.Dev', 3, 300, 'Dev');
         $baseCandidates = array($pmCandidate, $qcCandidate, $devCandidate);
-        new ItCompany($baseCandidates, $teams);
+        $itCompany = new ItCompany($baseCandidates, $teams);
+        $hrTeam = new HrTeam($itCompany);
 
-        $tm = HrTeam::getSpecialist(new Candidate($arr1, $arr2, $arr3, $arr4)); //testing function
+        $tm = $hrTeam->getSpecialist(new Candidate($arr1, $arr2, $arr3, $arr4), $itCompany); //testing function
         $tmInfo = "{$tm->getName()}, {$tm->getExperience()}, {$tm->getWantedSalary()}, {$tm->getProfile()}";
         $this->assertEquals($response, $tmInfo);
     }

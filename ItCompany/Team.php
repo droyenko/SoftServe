@@ -6,9 +6,8 @@ class Team
     protected $project;
     protected $teamMembers = array();
     protected $needs = array();
-    protected $completeness = false;
 
-    public function __construct($teamName, $project, $teamMembers, $completeness = "1")
+    public function __construct($teamName, $project, $teamMembers)
     {
         $this->teamName = $teamName;
         $this->project = $project;
@@ -32,12 +31,11 @@ class Team
 
     public function isComplete()
     {
-        return $this->completeness;
-    }
-
-    public function setCompleteness($val)
-    {
-        $this->completeness = $val;
+        if (count($this->getNeeds()) === 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function getNeeds()
@@ -48,17 +46,11 @@ class Team
     public function setNeeds(array $needs)
     {
         $this->needs = $needs;
-        if (count($needs) == 0) {
-            $this->completeness = true;
-        } else {
-            $this->completeness = false;
-        }
     }
 
     public function addNeed($experience, $wantedSalary, $profile)
     {
         $this->needs[] = new Candidate('Any', $experience, $wantedSalary, $profile);
-        $this->setCompleteness(false);
     }
 
     public function addTeamMember(Candidate $candidate)

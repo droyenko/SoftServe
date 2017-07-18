@@ -3,5 +3,5 @@
 
 abstract class Recruiter
 {
-    public static abstract function getSpecialist($need);
+    public abstract function getSpecialist(Candidate $need, ItCompany $company);
 }

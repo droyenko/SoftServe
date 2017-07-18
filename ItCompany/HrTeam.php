@@ -4,11 +4,22 @@ require_once 'Candidate.php';
 
 class HrTeam
 {
-    public static function canFindSpecialist($need)
+    public $itCompany = null;
+    public $recruiters = array();
+
+    function __construct(ItCompany $itCompany)
     {
-        $candidates = ItCompany::getCandidates();
+        $this->itCompany = $itCompany;
+        $this->recruiters = ["PM" => new PMRecruiter(),
+                             "QC" => new QCRecruiter(),
+                             "Dev" => new DevRecruiter()];
+    }
+
+    public function canFindSpecialist(Candidate $need)
+    {
+        $candidates = $this->itCompany->getCandidates();
         foreach ($candidates as $key => $candidate)
-            if (($candidate->getProfile() == $need->getProfile())
+            if (($candidate->getProfile() === $need->getProfile())
                 && ($candidate->getExperience() >= $need->getExperience())
                 && ($candidate->getWantedSalary() <= $need->getWantedSalary())
             ) {
@@ -18,15 +29,9 @@ class HrTeam
             }
     }
 
-    public static function getSpecialist($need)
+    public function getSpecialist(Candidate $need, ItCompany $company)
     {
-        if ($need->getProfile() == "PM"){
-            $tm = PMRecruiter::getSpecialist($need);
-        } elseif ($need->getProfile() == "Dev"){
-            $tm = DevRecruiter::getSpecialist($need);
-        }elseif ($need->getProfile() == "QC"){
-            $tm = QCRecruiter::getSpecialist($need);
-        }
-        return $tm;
+        $position = $need->getProfile();
+        return $this->recruiters[$position]->getSpecialist($need, $company);
     }
 }
