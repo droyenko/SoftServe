@@ -1,8 +1,5 @@
 <?php
 
-require_once 'FluffyPet.php';
-require_once 'Fluffy.php';
-
 class Hamster extends FluffyPet
 {
     use Fluffy;

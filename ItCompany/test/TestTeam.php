@@ -27,12 +27,15 @@ class TestTeam extends PHPUnit_Framework_TestCase
      */
     public function test_addTeamMember($name, $experience, $wantedSalary, $profile, $response)
     {
+        $teams = [];
+        $candidate = [];
+        $company = new ItCompany($candidate, $teams);
         $dev1 = new Developer('Anthony', 2000, 'Dev', 'PHP Team');
         $phpTeamMembers = array($dev1);
         $phpTeam = new Team('PHP Team', 'Fishing blog', $phpTeamMembers);
 
         $candidate = new Candidate($name, $experience, $wantedSalary, $profile);
-        $phpTeam->addTeamMember($candidate); //testing function
+        $phpTeam->closeNeed($candidate, $company); //testing function
         $teamMembersNames = '';
         foreach ($phpTeam->getTeamMembers() as $teamMember) {
             $teamMembersNames .= $teamMember->getName() . ", ";

@@ -1,7 +1,5 @@
 <?php
 
-require_once 'HardSpecialist.php';
-
 class PM extends HardSpecialist
 {
     public function doWork()

@@ -1,7 +1,6 @@
 <?php
 
-
 abstract class Recruiter
 {
-    public abstract function getSpecialist(Candidate $need, ItCompany $company);
+    public abstract function getSpecialist(Need $need, ItCompany $company);
 }

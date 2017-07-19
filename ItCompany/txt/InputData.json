@@ -8,21 +8,23 @@
             {"experience":1,"wantedSalary":700,"profile":"QC","name":"Andrew"},
             {"experience":4,"wantedSalary":1500,"profile":"QC","name":"Kate"}
         ],
-        "teamMembers": [
+        "phpTeamMembers": [
            {"salary":2000,"position":"Dev","team":"PHP Team","name":"Anthony"},
            {"salary":1500,"position":"PM","team":"PHP Team","name":"Anastasia"},
-           {"salary":500,"position":"QC","team":"PHP Team","name":"Sara"},
+           {"salary":500,"position":"QC","team":"PHP Team","name":"Sara"}
+        ],
+        "javaTeamMembers": [
            {"salary":2300,"position":"Dev","team":"Java Team","name":"Alex"},
            {"salary":1900,"position":"PM","team":"Java Team","name":"Elisabeth"},
            {"salary":1000,"position":"QC","team":"Java Team","name":"Albert"}
         ],
-        "javaTeamNeeds": [
-           {"experience":1,"wantedSalary":1500,"profile":"Dev","name":"Any"},
-           {"experience":2,"wantedSalary":1600,"profile":"QC","name":"Any"}
-        ],
         "phpTeamNeeds": [
-           {"experience":2,"wantedSalary":1700,"profile":"Dev","name":"Any"},
-           {"experience":4,"wantedSalary":2300,"profile":"PM","name":"Any"}
+           {"experience":2,"wantedSalary":1700,"profile":"Dev"},
+           {"experience":4,"wantedSalary":2300,"profile":"PM"}
+        ],
+        "javaTeamNeeds": [
+           {"experience":1,"wantedSalary":1500,"profile":"Dev"},
+           {"experience":2,"wantedSalary":1600,"profile":"QC"}
         ]
     }
 }

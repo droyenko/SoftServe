@@ -1,21 +1,19 @@
 <?php
 
-require_once 'Candidate.php';
-
 class HrTeam
 {
     public $itCompany = null;
-    public $recruiters = array();
+    public $recruiters = [];
 
     function __construct(ItCompany $itCompany)
     {
         $this->itCompany = $itCompany;
-        $this->recruiters = ["PM" => new PMRecruiter(),
-                             "QC" => new QCRecruiter(),
-                             "Dev" => new DevRecruiter()];
+        $this->recruiters = [ProfileEnum::QC => new QCRecruiter(),
+                             ProfileEnum::PM => new PMRecruiter(),
+                             ProfileEnum::Dev => new DevRecruiter()];
     }
 
-    public function canFindSpecialist(Candidate $need)
+    public function canFindSpecialist(Need $need)
     {
         $candidates = $this->itCompany->getCandidates();
         foreach ($candidates as $key => $candidate)
@@ -29,7 +27,7 @@ class HrTeam
             }
     }
 
-    public function getSpecialist(Candidate $need, ItCompany $company)
+    public function getSpecialist(Need $need, ItCompany $company)
     {
         $position = $need->getProfile();
         return $this->recruiters[$position]->getSpecialist($need, $company);

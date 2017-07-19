@@ -1,9 +1,5 @@
 <?php
 
-spl_autoload_register(function ($name) {
-    require_once $name . '.php';
-});
-
 class Developer extends HardSpecialist
 {
     public function doWork()

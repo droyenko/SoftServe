@@ -1,9 +1,5 @@
 <?php
 
-spl_autoload_register(function ($name) {
-    require_once $name . '.php';
-});
-
 abstract class Worker extends Person implements JsonSerializable
 {
     protected $salary;

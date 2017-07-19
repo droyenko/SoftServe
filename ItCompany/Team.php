@@ -3,15 +3,12 @@
 class Team
 {
     protected $teamName;
-    protected $project;
     protected $teamMembers = array();
     protected $needs = array();
 
-    public function __construct($teamName, $project, $teamMembers)
+    public function __construct($teamName)
     {
         $this->teamName = $teamName;
-        $this->project = $project;
-        $this->teamMembers = $teamMembers;
     }
 
     public function getTeamName()
@@ -19,14 +16,14 @@ class Team
         return $this->teamName;
     }
 
-    public function getProject()
-    {
-        return $this->project;
-    }
-
     public function getTeamMembers()
     {
         return $this->teamMembers;
+    }
+
+    public function getNeeds()
+    {
+        return $this->needs;
     }
 
     public function isComplete()
@@ -38,39 +35,52 @@ class Team
         }
     }
 
-    public function getNeeds()
-    {
-        return $this->needs;
-    }
-
-    public function setNeeds(array $needs)
-    {
-        $this->needs = $needs;
-    }
-
     public function addNeed($experience, $wantedSalary, $profile)
     {
-        $this->needs[] = new Candidate('Any', $experience, $wantedSalary, $profile);
+        $this->needs[] = new Need($experience, $wantedSalary, $profile);
     }
 
-    public function addTeamMember(Candidate $candidate)
+    public function addNeeds($needs)
+    {
+        $this->needs = $needs;
+        return $this;
+    }
+
+    public function unsetNeed(Need $needToUnset)
+    {
+        foreach ($this->needs as $key => $need){
+            if ($needToUnset === $need){
+                unset($this->needs[$key]);
+            }
+        }
+    }
+
+    public function addTeamMembers($arrayOfTeamMembers){
+        $this->teamMembers = $arrayOfTeamMembers;
+        return $this;
+    }
+
+    public function closeNeed(Candidate $candidate, ItCompany $company, Need $need)
     {
         $salary = $candidate->getWantedSalary();
         $position = $candidate->getProfile();
         $name = $candidate->getName();
 
         switch ($position) {
-            case 'Dev':
-                $newTeamMember = new Developer($name, $salary, $position, $this->teamName);
-                array_push($this->teamMembers, $newTeamMember);
+            case ProfileEnum::Dev:
+                $this->teamMembers[] = new Developer($name, $salary, $position, $this->teamName);
+                $company->unsetCandidate($candidate);
+                $this->unsetNeed($need);
                 break;
-            case 'PM':
-                $newTeamMember = new PM($name, $salary, $position, $this->teamName);
-                array_push($this->teamMembers, $newTeamMember);
+            case ProfileEnum::PM:
+                $this->teamMembers[] = new PM($name, $salary, $position, $this->teamName);
+                $company->unsetCandidate($candidate);
+                $this->unsetNeed($need);
                 break;
-            case 'QC':
-                $newTeamMember = new QC($name, $salary, $position, $this->teamName);
-                array_push($this->teamMembers, $newTeamMember);
+            case ProfileEnum::QC:
+                $this->teamMembers[] = new QC($name, $salary, $position, $this->teamName);
+                $company->unsetCandidate($candidate);
+                $this->unsetNeed($need);
                 break;
         }
     }
