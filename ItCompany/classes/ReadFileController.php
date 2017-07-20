@@ -27,7 +27,8 @@ class ReadFileController
 
     public function convertJsonToArray($fileToRead)
     {
-        $str = file_get_contents(__DIR__ . $fileToRead);
+//        $str = file_get_contents(__DIR__ . $fileToRead);
+        $str = file_get_contents('files/' . $fileToRead);
         $json = json_decode($str, true);
         foreach ($json['data']['candidates'] as $candidate) {
             $this->inputData['candidates'][] = new Candidate($candidate['name'], $candidate['experience'], $candidate['wantedSalary'], $candidate['profile']);

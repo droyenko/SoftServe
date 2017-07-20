@@ -16,15 +16,15 @@ class HrTeam
     public function canFindSpecialist(Need $need)
     {
         $candidates = $this->itCompany->getCandidates();
-        foreach ($candidates as $key => $candidate)
+        foreach ($candidates as $key => $candidate) {
             if (($candidate->getProfile() === $need->getProfile())
                 && ($candidate->getExperience() >= $need->getExperience())
                 && ($candidate->getWantedSalary() <= $need->getWantedSalary())
             ) {
                 return true;
-            } else {
-                return false;
             }
+        }
+        return false;
     }
 
     public function getSpecialist(Need $need, ItCompany $company)
