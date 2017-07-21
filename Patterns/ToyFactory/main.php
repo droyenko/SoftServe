@@ -1,7 +1,9 @@
 <?php
 
-require_once 'AbstractFactory/WoodenFactory.php';
-require_once 'AbstractFactory/PaperFactory.php';
+spl_autoload_register(function ($name)
+{
+    require_once $name . '.php';
+});
 
 $woodenFactory = new WoodenFactory();
 $paperFactory = new PaperFactory();

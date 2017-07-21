@@ -6,9 +6,6 @@ require_once 'Hamster.php';
 
 class SQLdbConnection
 {
-    /*
-    * Encapsulated function for connection to database
-    */
     private static function dbConnect()
     {
         $dsn = 'mysql:dbname=petshopdb;host=localhost';
