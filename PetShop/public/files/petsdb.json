@@ -1,0 +1,11 @@
+[{"name":"Jack","price":"300","color":"black","fluffiness":"3","type":"cat"},
+ {"name":"Goose","price":"150","color":"gray","fluffiness":"1","type":"cat"}, 
+ {"name":"Snake","price":"400","color":"white","fluffiness":"0","type":"cat"},
+ {"name":"Heat","price":"500","color":"red","fluffiness":"0","type":"dog"},
+ {"name":"Snowflake","price":"700","color":"white","fluffiness":"0","type":"dog"},
+ {"name":"Submarine","price":"300","color":"yellow","fluffiness":"0","type":"dog"},
+ {"name":"Hamster","price":"100","color":"white","fluffiness":"1","type":"hamster"},
+ {"name":"Hamster","price":"130","color":"green","fluffiness":"2","type":"hamster"},
+ {"name":"Hamster","price":"85","color":"blue","fluffiness":"0","type":"hamster"},
+ {"name":"Pashtet","price":"123","color":"green","fluffiness":"3","type":"cat"},
+ {"name":"Dino","price":"400","color":"brown","fluffiness":"0","type":"dog"}]

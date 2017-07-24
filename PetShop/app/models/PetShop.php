@@ -7,17 +7,18 @@ require_once 'SQLdbConnection.php';
 
 class PetShop
 {
-    private $pets = array();
+    private $pets = [];
 
     public function __construct()
     {
-        $pets = SQLdbConnection::getAllPetsAsArray();
+//        $pets = SQLdbConnection::convertDBToArray();
+        $pets = SQLdbConnection::convertJsonToArray();
         $this->pets = $pets;
     }
 
     public function getPriceHigherAvg()
     {
-        $result = array();
+        $result = [];
         $avgPrice = $this->getAvgPrice();
         foreach ($this->pets as $pet) {
             if ($pet->isYourPrice() > $avgPrice) {
@@ -41,7 +42,7 @@ class PetShop
 
     public function getWhiteOrFluffy()
     {
-        $result = array();
+        $result = [];
         foreach ($this->pets as $pet) {
             if (($pet instanceof FluffyPet) && ($pet->isYourColor() == 'white' || $pet->isFluffy())) {
                 $result[] = $pet->isYourName();
@@ -52,7 +53,7 @@ class PetShop
 
     public function getCats()
     {
-        $result = array();
+        $result = [];
         foreach ($this->pets as $pet) {
             if ($pet instanceof Cat) {
                 $result[] = $pet->isYourName();
@@ -66,20 +67,3 @@ class PetShop
         $pets[] = $pet;
     }
 }
-
-//if (isset($_POST['action'])) {
-//    switch ($_POST['action']) {
-//        case 'cats':
-//            $petShop = new PetShop();
-//            echo "List of all cats: {$petShop->getCats()}.<br > ";
-//            break;
-//        case 'hiPrice':
-//            $petShop = new PetShop();
-//            echo "List of expensive pets: {$petShop->getPriceHigherAvg()}.<br > ";
-//            break;
-//        case 'whiteOrFluffy':
-//            $petShop = new PetShop();
-//            echo "List of fluffy or white pets: {$petShop->getWhiteOrFluffy()}";
-//            break;
-//    }
-//}

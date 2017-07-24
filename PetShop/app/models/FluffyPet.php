@@ -11,4 +11,12 @@ abstract class FluffyPet extends Pet
         parent::__construct($price, $color);
         $this->fluffiness = $fluffiness;
     }
+
+    /**
+     * @return int
+     */
+    public function getFluffiness()
+    {
+        return $this->fluffiness;
+    }
 }

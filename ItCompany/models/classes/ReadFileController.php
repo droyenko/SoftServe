@@ -20,15 +20,14 @@ class ReadFileController
         $extension = pathinfo($source, PATHINFO_EXTENSION);
         if ($extension == 'json'){
             return $this->convertJsonToArray($source);
-        } elseif ($extension == 'db'){
+        } elseif ($extension == 'sql'){
 
         }
     }
 
     public function convertJsonToArray($fileToRead)
     {
-//        $str = file_get_contents(__DIR__ . $fileToRead);
-        $str = file_get_contents('files/' . $fileToRead);
+        $str = file_get_contents(dirname(dirname(dirname(__FILE__))) . "\\files\\$fileToRead");
         $json = json_decode($str, true);
         foreach ($json['data']['candidates'] as $candidate) {
             $this->inputData['candidates'][] = new Candidate($candidate['name'], $candidate['experience'], $candidate['wantedSalary'], $candidate['profile']);
