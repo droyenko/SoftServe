@@ -24,6 +24,7 @@ class SQLdbConnection
             } else { //if not exist creating new database and fill it with data from *.sql file
                 $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $dbh->exec("CREATE DATABASE $newbdname");
+
                 $dbh->exec("use $newbdname");
 
                 $lines = file(dirname(dirname(dirname(__FILE__))) .'\public\files\petsdb.sql');

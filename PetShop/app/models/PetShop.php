@@ -11,8 +11,8 @@ class PetShop
 
     public function __construct()
     {
-//        $pets = SQLdbConnection::convertDBToArray();
-        $pets = SQLdbConnection::convertJsonToArray();
+        $pets = SQLdbConnection::convertDBToArray();
+//        $pets = SQLdbConnection::convertJsonToArray();
         $this->pets = $pets;
     }
 

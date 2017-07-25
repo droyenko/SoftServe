@@ -1,7 +1,7 @@
 <?php
 
 spl_autoload_register(function ($name) {
-    require ( "/classes/" .  $name . ".php");
+    require ( $name . ".php");
 });
 
 $itCompany = new ItCompany();
@@ -14,24 +14,24 @@ $javaTeam->addNeeds($arrayOfData['javaTeamNeeds'])->addTeamMembers($arrayOfData[
 $itCompany->setCandidates($arrayOfData['candidates'])->addTeam($phpTeam)->addTeam($javaTeam);
 
 echo "PHP TeamMembers<br>";
-print_r($javaTeam->getTeamMembers());
+print_r($phpTeam->getTeamMembers());
 echo "<br>====================================================================================<br>";
 echo "PHP Team Needs<br>";
-print_r($javaTeam->getNeeds());
+print_r($phpTeam->getNeeds());
 echo "<br>====================================================================================<br>";
 echo "Candidates<br>";
 print_r($itCompany->getCandidates());
 echo "<br>====================================================================================<br>";
-$itCompany->hire($javaTeam);
+$itCompany->hire($phpTeam);
 echo "PHP TeamMembers<br>";
-print_r($javaTeam->getTeamMembers());
+print_r($phpTeam->getTeamMembers());
 echo "<br>====================================================================================<br>";
 echo "PHP Team Needs<br>";
-print_r($javaTeam->getNeeds());
+print_r($phpTeam->getNeeds());
 echo "<br>====================================================================================<br>";
 echo "Candidates<br>";
 print_r($itCompany->getCandidates());
 echo "<br>====================================================================================<br>";
 
-print_r($javaTeam->doJob());
-var_dump($javaTeam->isComplete());
+print_r($phpTeam->doJob());
+var_dump($phpTeam->isComplete());
