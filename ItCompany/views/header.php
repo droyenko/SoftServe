@@ -7,10 +7,10 @@
 <body>
 
 <div id="header">
-     Header
-    <a href="http://localhost/softserve/ItCompany/TeamBefore/showInfo/java">Java Team before</a>
-    <a href="http://localhost/softserve/ItCompany/TeamAfter/showInfo/java">Java Team after</a>
-    <a href="http://localhost/softserve/ItCompany/TeamBefore/showInfo/php">PHP Team before</a>
-    <a href="http://localhost/softserve/ItCompany/TeamAfter/showInfo/php">PHP Team after</a>
+    <a href="http://localhost/softserve/ItCompany/teaminfo/showbefore">IT Company before</a>
+    <a href="http://localhost/softserve/ItCompany/teaminfo/showafter">IT Company after</a>
+    <a href="http://localhost/softserve/ItCompany/teaminfo/showall">Show all</a>
+
+
 </div>
 <div id="content">

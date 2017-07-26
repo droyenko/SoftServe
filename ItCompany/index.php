@@ -5,7 +5,6 @@ spl_autoload_register(function ($class){
     $pathLibs = 'libs/' . $class . '.php';
     $pathModels = 'models/' . $class . '.php';
     $pathViews = 'views/' . $class . '.php';
-    $pathPublicCss = 'public/css/' . $class . '.php';
 
     if (file_exists($pathControllers)){
         require_once $pathControllers;
@@ -15,8 +14,6 @@ spl_autoload_register(function ($class){
         require_once $pathModels;
     } elseif (file_exists($pathViews)){
         require_once $pathViews;
-    } elseif (file_exists($pathPublicCss)){
-        require_once $pathPublicCss;
     }
 });
 

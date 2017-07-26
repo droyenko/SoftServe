@@ -5,7 +5,7 @@ class HrTeam
     public $itCompany = null;
     public $recruiters = [];
 
-    function __construct(ItCompany $itCompany)
+    public function __construct(ItCompany $itCompany)
     {
         $this->itCompany = $itCompany;
         $this->recruiters = [ProfileEnum::QC => new QCRecruiter(),

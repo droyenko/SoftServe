@@ -1,9 +1,8 @@
 <?php
 
-class Help_model extends Model
-{
-    function __construct()
-    {
+class Help_Model extends Model {
+
+    public function __construct() {
         echo 'Help model';
     }
 }

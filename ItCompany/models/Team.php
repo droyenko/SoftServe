@@ -3,8 +3,8 @@
 class Team
 {
     protected $teamName;
-    protected $teamMembers = array();
-    protected $needs = array();
+    protected $teamMembers = [];
+    protected $needs = [];
 
     public function __construct($teamName)
     {

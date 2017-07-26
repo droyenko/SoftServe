@@ -6,7 +6,7 @@ class Candidate extends Person implements IITWorker, JsonSerializable
     protected $wantedSalary;
     protected $profile;
 
-    function __construct($name, $experience, $wantedSalary, $profile)
+    public function __construct($name, $experience, $wantedSalary, $profile)
     {
         $this->experience = $experience;
         $this->wantedSalary = $wantedSalary;

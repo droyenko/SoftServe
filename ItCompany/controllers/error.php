@@ -2,14 +2,9 @@
 
 class Error extends Controller
 {
-    function __construct()
+    public function index()
     {
-        parent::__construct();
-    }
-
-    function index()
-    {
-        $this->view->msg = 'This page doesn\'t exist';
+        $this->view->msg = 'ERROR: 404';
         $this->view->render('error/index');
     }
 }

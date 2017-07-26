@@ -17,3 +17,32 @@ body{
     padding: 20px;
 }
 
+#before{
+    padding: 10px;
+    float: left;
+    width: 47%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#after{
+    padding: 10px;
+    float: right;
+    width: 47%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+#clear{
+    clear: both;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+

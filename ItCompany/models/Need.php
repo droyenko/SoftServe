@@ -6,7 +6,7 @@ class Need implements JsonSerializable
     protected $wantedSalary;
     protected $profile;
 
-    function __construct($experience, $wantedSalary, $profile)
+    public function __construct($experience, $wantedSalary, $profile)
     {
         $this->experience = $experience;
         $this->wantedSalary = $wantedSalary;
