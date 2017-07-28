@@ -1,0 +1,21 @@
+{
+    "name": "user/it-company",
+    "description": "SoftServe acadamy project",
+    "authors": [
+        {
+            "name": "Dmytro Roienko",
+            "email": "dmytro.royenko@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": [
+                "controllers",
+                "libs",
+                "models/ItCompany",
+                "models/PetShop"
+                ]
+        }
+    },
+    "require": {}
+}
