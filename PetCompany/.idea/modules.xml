@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../PetCompany/.idea/ItCompany.iml" filepath="$PROJECT_DIR$/../PetCompany/.idea/ItCompany.iml" />
+      <module fileurl="file://C:\xampp\htdocs\softserve\PetCompany\.idea\ItCompany.iml" filepath="C:\xampp\htdocs\softserve\PetCompany\.idea\ItCompany.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/PetCompany.iml" filepath="$PROJECT_DIR$/.idea/PetCompany.iml" />
     </modules>
   </component>
 </project>
