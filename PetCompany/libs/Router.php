@@ -8,6 +8,8 @@ class Router
         $url = rtrim($url, '/');
         $url = explode('/', filter_var($url, FILTER_SANITIZE_URL));
 
+        print_r($url);
+
         if (empty($url[0])) {
             require 'controllers/index.php';
             $controller = new Index();

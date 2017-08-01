@@ -8,8 +8,8 @@ class TeamInfoModel extends Model
     {
         //change this depending on database you need
         parent::__construct();
-        $data = $this->db->convertCompanyDbToArray(DBSettings::itCompanyDbFileName);
-//        $data = $this->db->convertCompanyJsonToArray(DBSettings::itCompanyJsonFileName);
+//        $data = $this->db->convertCompanyDbToArray(DBSettings::itCompanyDbFileName);
+        $data = $this->db->convertCompanyJsonToArray(DBSettings::itCompanyJsonFileName);
         $this->data = $data;
     }
 

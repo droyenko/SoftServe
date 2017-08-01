@@ -8,8 +8,8 @@ class PetShopModel extends Model
     {
         //change this depending on database you need
         parent::__construct();
-        $pets = $this->db->convertPetsDbToArray(DBSettings::petShopDbFileName);
-//        $pets = $this->db->convertPetsJsonToArray(DBSettings::petShopJsonFileName);
+//        $pets = $this->db->convertPetsDbToArray(DBSettings::petShopDbFileName);
+        $pets = $this->db->convertPetsJsonToArray(DBSettings::petShopJsonFileName);
         $this->pets = $pets;
     }
 
